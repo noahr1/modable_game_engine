@@ -8,7 +8,19 @@
             let oldTimeStamp;
             let fps;
 
-            var context = document.getElementById('canvas').getContext('2d');
+            let canvas;
+            let context;
+
+            window.onload = init;
+
+            function init(){
+                canvas = document.getElementById('canvas');
+                context = canvas.getContext('2d');
+
+                // Start the first frame request
+                window.requestAnimationFrame(gameLoop);
+            }
+
 
                 function gameLoop(timeStamp) {
 
@@ -26,8 +38,6 @@
                     context.fillStyle = 'black';
                     context.fillText("FPS: " + fps, 10, 30);
 
-                    // Perform the drawing operation
-                    draw();
 
                     // The loop function has reached it's end. Keep requesting new frames
                     window.requestAnimationFrame(gameLoop);
